@@ -1,5 +1,7 @@
 # Compile C code from various sources while extracting the control-flow graphs, as used in register allocation.
 
+# TODO: Add clean target that invoced "make clean" in all subdirectories from $(GRAPHSOURCES).
+
 GRAPHSOURCES = whetstone dhrystone coremark contiki fuzix atomthreads nuttx
 
 .PHONY: all $(GRAPHSOURCES)
