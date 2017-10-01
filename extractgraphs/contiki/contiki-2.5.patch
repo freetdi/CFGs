@@ -1,0 +1,144 @@
+diff -ru contiki-2.5/cpu/z80/Makefile.z80 /home/philipp/contiki-2.5-alt/cpu/z80/Makefile.z80
+--- contiki-2.5/cpu/z80/Makefile.z80	2011-09-06 23:46:00.000000000 +0200
++++ /home/philipp/contiki-2.5-alt/cpu/z80/Makefile.z80	2017-10-01 13:40:12.512500201 +0200
+@@ -7,8 +7,8 @@
+ 
+ ### Compiler definitions
+ CC       = sdcc
+-LD       = link-z80
+-AS       = as-z80
++LD       = sdldz80
++AS       = sdasz80
+ AR	 = sdcclib
+ OBJCOPY  = objcopy
+ STRIP    = strip
+@@ -20,7 +20,7 @@
+ 
+ ### Default flags
+ CFLAGS  += --std-c99 -mz80 --opt-code-size
+-CFLAGS	+= --peep-file $(CONTIKI_CPU)/z80peephole.def --fverbose-asm
++CFLAGS	+= --fverbose-asm --dump-graphs
+ ASFLAGS +=
+ LDFLAGS += -mz80 --out-fmt-ihx --no-std-crt0
+ AROPTS   = -a
+@@ -42,9 +42,9 @@
+ 
+ CONTIKI_ASMFILES += uip_arch-asm.S crt0.S 
+ 
+-CONTIKI_ASMOBJECTFILES = ${addprefix $(OBJECTDIR)/,$(CONTIKI_ASMFILES:.S=.o)}
++CONTIKI_ASMOBJECTFILES = ${addprefix $(OBJECTDIR)/,$(CONTIKI_ASMFILES:.S=.rel)}
+ 
+-CONTIKI_CASMOBJECTFILES = ${addprefix $(OBJECTDIR)/,$(CONTIKI_CASMFILES:.cS=.o)}
++CONTIKI_CASMOBJECTFILES = ${addprefix $(OBJECTDIR)/,$(CONTIKI_CASMFILES:.cS=.rel)}
+ 
+ CONTIKI_PLATFORM_DIRS = $(PLATFORM_APPDIRS) \
+ 	 ${addprefix $(CONTIKI)/platform/$(TARGET)/, $(CONTIKI_TARGET_DIRS)}
+@@ -56,11 +56,11 @@
+ vpath %.cS $(CONTIKI_PLATFORM_DIRS)
+ 
+ #option -MMD doesn't work well on SDCC as of 2.9.0
+-$(OBJECTDIR)/%.o: %.c
++$(OBJECTDIR)/%.rel: %.c
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ ifndef CUSTOM_RULE_CS_TO_OBJECTDIR_O
+-$(OBJECTDIR)/%.o: %.cS
++$(OBJECTDIR)/%.rel: %.cS
+ 	cp $< $(OBJECTDIR)/$*.c
+ 	$(CC) $(CFLAGS) -E $(OBJECTDIR)/$*.c > $(OBJECTDIR)/tmp
+ 	perl -pe "s/^#(.*)/;$$1/" $(OBJECTDIR)/tmp > $(OBJECTDIR)/$*.S
+@@ -79,5 +79,5 @@
+ 
+ #CUSTOM_RULE_LINK
+ %.ihx: contiki-$(TARGET).lib
+-	$(CC) $(LDFLAGS)  -o $@ $(OBJECTDIR)/crt0.o -lcontiki-$(TARGET).lib
++	$(CC) $(LDFLAGS)  -o $@ $(OBJECTDIR)/crt0.rel -lcontiki-$(TARGET).lib
+ 	$(LD) -nf $*
+diff -ru contiki-2.5/cpu/z80/z80def.h /home/philipp/contiki-2.5-alt/cpu/z80/z80def.h
+--- contiki-2.5/cpu/z80/z80def.h	2011-09-06 23:46:00.000000000 +0200
++++ /home/philipp/contiki-2.5-alt/cpu/z80/z80def.h	2017-10-01 13:40:12.512500201 +0200
+@@ -50,21 +50,13 @@
+ 
+ 
+ /* Generic types. */
+-typedef   signed char    int8_t;
+-typedef unsigned char   uint8_t;
+-typedef   signed short  int16_t;
+-typedef unsigned short uint16_t;
+-typedef unsigned long  uint32_t;
++#include <stddef.h>
++#include <stdint.h>
+ typedef unsigned char   u8_t;      /* 8 bit type */
+ typedef unsigned short u16_t;      /* 16 bit type */
+ typedef unsigned long  u32_t;      /* 32 bit type */
+ typedef   signed long  s32_t;      /* 32 bit type */
+ typedef unsigned short uip_stats_t;
+-typedef   signed long  int32_t;    /* 32 bit type */
+-#ifndef _SIZE_T_DEFINED
+-#define _SIZE_T_DEFINED
+-typedef unsigned int size_t;
+-#endif
+ 
+ /* Compiler configurations */
+ #define CCIF
+diff -ru contiki-2.5/Makefile.include /home/philipp/contiki-2.5-alt/Makefile.include
+--- contiki-2.5/Makefile.include	2011-09-06 23:46:00.000000000 +0200
++++ /home/philipp/contiki-2.5-alt/Makefile.include	2017-10-01 13:40:12.952495312 +0200
+@@ -80,7 +80,7 @@
+ CONTIKIDIRS += ${addprefix $(CONTIKI)/core/,dev lib net net/mac net/rime \
+                  net/rpl sys cfs ctk lib/ctk loader . }
+ 
+-oname = ${patsubst %.c,%.o,${patsubst %.S,%.o,$(1)}}
++oname = ${patsubst %.c,%.rel,${patsubst %.S,%.rel,$(1)}}
+ 
+ CONTIKI_OBJECTFILES = ${addprefix $(OBJECTDIR)/,${call oname, $(CONTIKI_SOURCEFILES)}}
+ 
+@@ -154,10 +154,10 @@
+ ### See http://make.paulandlesley.org/autodep.html#advanced
+ 
+ define FINALIZE_DEPENDENCY
+-cp $(@:.o=.d) $(@:.o=.$$$$); \
++cp $(@:.rel=.d) $(@:.rel=.$$$$); \
+ sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+-    -e '/^$$/ d' -e 's/$$/ :/' < $(@:.o=.$$$$) >> $(@:.o=.d); \
+-rm -f $(@:.o=.$$$$)
++    -e '/^$$/ d' -e 's/$$/ :/' < $(@:.rel=.$$$$) >> $(@:.rel=.d); \
++rm -f $(@:.rel=.$$$$)
+ endef
+ 
+  clean:
+@@ -174,18 +174,18 @@
+ endif
+ 
+ ifndef CUSTOM_RULE_C_TO_OBJECTDIR_O
+-$(OBJECTDIR)/%.o: %.c
++$(OBJECTDIR)/%.rel: %.c
+ 	$(CC) $(CFLAGS) -MMD -c $< -o $@
+ 	@$(FINALIZE_DEPENDENCY)
+ endif
+ 
+ ifndef CUSTOM_RULE_S_TO_OBJECTDIR_O
+-$(OBJECTDIR)/%.o: %.S
++$(OBJECTDIR)/%.rel: %.S
+ 	$(AS) $(ASFLAGS) -o $@ $<
+ endif
+ 
+ ifndef CUSTOM_RULE_C_TO_O
+-%.o: %.c
++%.rel: %.c
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ endif
+ 
+diff -ru contiki-2.5/platform/pc-6001/Makefile /home/philipp/contiki-2.5-alt/platform/pc-6001/Makefile
+--- contiki-2.5/platform/pc-6001/Makefile	2011-09-06 23:46:00.000000000 +0200
++++ /home/philipp/contiki-2.5-alt/platform/pc-6001/Makefile	2017-10-01 13:40:12.536499934 +0200
+@@ -70,7 +70,7 @@
+ minimal	: contiki
+ serial	: contiki
+ rom	: contiki.rom
+-load	: contiki
++#load	: contiki
+ server	: contiki
+ client	: contiki
+ 
+

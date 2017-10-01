@@ -1,0 +1,4 @@
+This directory contains some tools used to extract the control-flow-graphs from source code.
+
+The graphs can be reextracted by invocing "make".
+
