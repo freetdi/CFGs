@@ -1,0 +1,15 @@
+diff --git ports/stm8/sdcc.mak ports/stm8/sdcc.mak
+index 3bd75b5..b79e4ed 100644
+--- ports/stm8/sdcc.mak
++++ ports/stm8/sdcc.mak
+@@ -42,8 +42,8 @@ vpath %.elf .\$(BUILD_DIR)
+ vpath %.hex .\$(BUILD_DIR)
+ 
+ # Compiler/Assembler flags
+-CFLAGS= -mstm8 -c -D $(PART) --opt-code-size
+-DBG_CFLAGS= -mstm8 -c -D $(PART) --opt-code-size
++CFLAGS= -mstm8 -c -D $(PART) --opt-code-size --dump-graphs
++DBG_CFLAGS= -mstm8 -c -D $(PART) --opt-code-size --dump-graphs
+ ASMFLAGS= -loff
+ DBG_ASMFLAGS= -loff
+ LINKFLAGS= -mstm8

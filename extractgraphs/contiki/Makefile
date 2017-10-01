@@ -1,4 +1,5 @@
 # Extract contiki-2.5, patch it to work with current SDCC and dump the graphs, compile.
+# To be independent of Contiki 2.5 release tarball availability, we keep a copy with our code.
 
 .PHONY: all clean
 
