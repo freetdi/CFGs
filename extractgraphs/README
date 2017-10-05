@@ -1,4 +1,12 @@
 This directory contains some tools used to extract the control-flow-graphs from source code.
 
-The graphs can be reextracted by invocing "make".
+The graphs can be reextracted by invocing "make". However the Makefile in this directory is by itself not very useful (see problems below).
+
+This will build various C source files with the SDCC using the --dump-graphs option.
+Most interesting are problably the control-flow graphs from register allocation. Their filenames are <file>.dumpralloccfg_<function>.dot
+
+Problems:
+* Coremark in non-free, you have to get the source elsewhere
+* FUZIX needs write access to /opt to build
+* NuttX is very complicated to build
 

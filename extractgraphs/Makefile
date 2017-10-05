@@ -2,7 +2,7 @@
 
 # TODO: Add clean target that invoced "make clean" in all subdirectories from $(GRAPHSOURCES).
 
-GRAPHSOURCES = whetstone dhrystone coremark contiki fuzix atomthreads nuttx
+GRAPHSOURCES = whetstone dhrystone coremark contiki fuzix atomthreads
 
 .PHONY: all $(GRAPHSOURCES)
 
@@ -25,7 +25,4 @@ fuzix:
 
 atomthreads:
 	cd atomthreads && make
-
-nuttx:
-	cd nuttx && make
 
