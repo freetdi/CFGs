@@ -2,30 +2,30 @@
 
 # TODO: Add clean target that invoced "make clean" in all subdirectories from $(GRAPHSOURCES).
 
-GRAPHSOURCES = whetstone dhrystone coremark contiki fuzix atomthreads nuttx
+GRAPHSOURCES = graphs/whetstone graphs/dhrystone graphs/contiki graphs/atomthreads
 
-.PHONY: all $(GRAPHSOURCES)
+.PHONY: all clean
 
 all: $(GRAPHSOURCES)
 
-whetstone:
-	cd whetstone && make
+graphs/whetstone:
+	cd whetstone && make && cd .. && mkdir $@ && cp `find whetstone -name "*dumpralloccfg*"` $@/
 
-dhrystone:
-	cd dhrystone && make
+graphs/dhrystone:
+	cd dhrystone && make && cd .. && mkdir $@ && cp `find dhrystone -name "*dumpralloccfg*"` $@/
 
-coremark:
-	cd coremark && make
+graphs/coremark:
+	cd coremark && make && cd .. && mkdir $@ && cp `find coremark -name "*dumpralloccfg*"` $@/
 
-contiki:
-	cd contiki && make
+graphs/contiki:
+	cd contiki && make && cd .. && mkdir $@ && cp `find contiki -name "*dumpralloccfg*"` $@/
 
-fuzix:
-	cd fuzix && make
+graphs/fuzix:
+	cd fuzix && make && cd .. && mkdir $@ && cp `find fuzix -name "*dumpralloccfg*"` $@/
 
-atomthreads:
-	cd atomthreads && make
+graphs/atomthreads:
+	cd atomthreads && make && cd .. && mkdir $@ && cp `find atomthreads -name "*dumpralloccfg*"` $@/
 
-nuttx:
-	cd nuttx && make
+clean:
+	rm -rf graphs/* && cd whetstone && make clean && cd .. && cd dhrystone && make clean && cd .. && cd coremark && make clean && cd .. && cd contiki && make clean && cd ..
 
