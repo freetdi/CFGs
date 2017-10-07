@@ -1,6 +1,6 @@
 This directory contains some tools used to extract the control-flow-graphs from source code.
 
-Most graphs can be reextracted by simply invocing "make". However , (see problems below.
+Most graphs can be reextracted by simply invocing "make".
 
 This will build various C source files with the SDCC using the --dump-graphs option.
 Most interesting are problably the control-flow graphs from register allocation. Their filenames are <file>.dumpralloccfg_<function>.dot

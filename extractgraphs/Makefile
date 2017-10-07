@@ -2,11 +2,11 @@
 
 # TODO: Add clean target that invoced "make clean" in all subdirectories from $(GRAPHSOURCES).
 
-GRAPHSOURCES = graphs/whetstone graphs/dhrystone graphs/contiki graphs/atomthreads
+GRAPHS = graphs/whetstone graphs/dhrystone graphs/contiki graphs/atomthreads
 
 .PHONY: all clean
 
-all: $(GRAPHSOURCES)
+all: $(GRAPHS)
 
 graphs/whetstone:
 	cd whetstone && make && cd .. && mkdir $@ && cp `find whetstone -name "*dumpralloccfg*"` $@/
