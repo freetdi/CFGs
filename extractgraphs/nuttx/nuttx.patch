@@ -1,0 +1,13 @@
+diff --git configs/z80sim/scripts/Make.defs configs/z80sim/scripts/Make.defs
+index d0b46bd008..2dacc34bfe 100644
+--- configs/z80sim/scripts/Make.defs
++++ configs/z80sim/scripts/Make.defs
+@@ -61,7 +61,7 @@ CPP = sdcpp
+ LD = sdldz80
+ AS = sdasz80
+ AR = sdar -r
+-ARCHCPUFLAGS = -mz80
++ARCHCPUFLAGS = -mz80 --dump-graphs
+ 
+ ifeq ($(CONFIG_DEBUG_SYMBOLS),y)
+   ARCHOPTIMIZATION = --debug
