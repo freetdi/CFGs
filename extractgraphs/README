@@ -12,5 +12,5 @@ Graphs from Coremark and FUZIX are not extracted by a simple "make", due to the 
 * Coremark is non-free, you have to get the source manually first (see also coremark/Makefile)
 * FUZIX needs write access to /opt to build
 
-For Atomthreads, FUZIX and NuttX, source code is downloaded before the build. A connection to GitHub (Atomthreads, FUZIX) and Bitbucket (NuttX) is needed.
+For Atomthreads, FUZIX, NuttX, and SDCC source code is downloaded before the build. A connection to GitHub (Atomthreads, FUZIX), Bitbucket (NuttX) and SourceForge (SDCC) is needed.
 

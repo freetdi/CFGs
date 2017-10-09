@@ -2,7 +2,7 @@
 
 # TODO: Add clean target that invoced "make clean" in all subdirectories from $(GRAPHSOURCES).
 
-GRAPHS = graphs/whetstone graphs/dhrystone graphs/contiki graphs/atomthreads graphs/nuttx
+GRAPHS = graphs/whetstone graphs/dhrystone graphs/contiki graphs/atomthreads graphs/nuttx graphs/stdlib
 
 .PHONY: all clean
 
@@ -29,6 +29,9 @@ graphs/atomthreads:
 graphs/nuttx:
 	cd nuttx && make && cd .. && mkdir $@ && cp `find nuttx -name "*dumpralloccfg*"` $@/
 
+graphs/stdlib:
+	cd stdlib && make && cd .. && mkdir $@ && cp `find stdlib -name "*dumpralloccfg*"` $@/
+
 clean:
-	rm -rf graphs/* && cd whetstone && make clean && cd .. && cd dhrystone && make clean && cd .. && cd coremark && make clean && cd .. && cd contiki && make clean && cd .. && cd nuttx && make clean
+	rm -rf graphs/* && cd whetstone && make clean && cd .. && cd dhrystone && make clean && cd .. && cd coremark && make clean && cd .. && cd contiki && make clean && cd .. && cd nuttx && make clean cd .. && cd stdlib && make clean
 
