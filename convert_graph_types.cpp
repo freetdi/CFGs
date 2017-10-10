@@ -178,7 +178,9 @@ void from_dot_to_gr(std::string &fname_in, std::string &fname_out){
     for(boost::tie(eIt, eEnd) = boost::edges(G); eIt != eEnd; eIt++){
         unsigned s = boost::source(*eIt, G);
         unsigned t = boost::target(*eIt, G);
-        fout << s+1 << " " << t+1 << std::endl;
+		  assert( G[s].id < n );
+		  assert( G[t].id < n );
+        fout << G[s].id+1 << " " << G[t].id+1 << std::endl;
     }
     fout.close();
 }
