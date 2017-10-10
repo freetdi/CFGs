@@ -1,7 +1,12 @@
 
-
-DIRS = atomthreads contiki coremark dhrystone fuzix whetstone
+DIRS = atomthreads contiki coremark dhrystone fuzix whetstone stdlib nuttx
 ALGS = fipptm tamaki thorup
+
+gr:
+	for i in ${DIRS}; do \
+		( cd $$i && ../../convert_graph_types dot gr *.dot ); \
+	done
+
 
 THINGS = ${DIRS:%=%.out}
 SUMMARIES = ${ALGS:%=%.sum.out}
