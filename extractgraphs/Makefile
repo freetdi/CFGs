@@ -33,5 +33,5 @@ graphs/stdlib:
 	cd stdlib && make && cd .. && mkdir $@ && cp `find stdlib -name "*dumpralloccfg*"` $@/
 
 clean:
-	rm -rf graphs/* && cd whetstone && make clean && cd .. && cd dhrystone && make clean && cd .. && cd coremark && make clean && cd .. && cd contiki && make clean && cd .. && cd nuttx && make clean cd .. && cd stdlib && make clean
+	rm -rf graphs/* && cd whetstone && make clean && cd .. && cd dhrystone && make clean && cd .. && cd coremark && make clean && cd .. && cd contiki && make clean && cd .. && cd nuttx && make clean && cd .. && cd stdlib && make clean
 
