@@ -2,7 +2,7 @@ This directory contains some tools used to extract the control-flow-graphs from 
 
 Most graphs can be reextracted by simply invocing "make".
 
-This will build various C source files with the SDCC using the --dump-graphs option.
+This will build various C source files with the SDCC using the --dump-graphs option. SDCC 3.6.9 #10039 or later is required.
 Most interesting are problably the control-flow graphs from register allocation. Their filenames are <file>.dumpralloccfg_<function>.dot
 
 Problems:
@@ -12,5 +12,5 @@ Graphs from Coremark and FUZIX are not extracted by a simple "make", due to the 
 * Coremark is non-free, you have to get the source manually first (see also coremark/Makefile)
 * FUZIX needs write access to /opt to build
 
-For Atomthreads and FUZIX, source code is downloaded before the build. Read access to GitHub is needed.
+For Atomthreads, FUZIX, NuttX, and SDCC source code is downloaded before the build. A connection to GitHub (Atomthreads, FUZIX), Bitbucket (NuttX) and SourceForge (SDCC) is needed.
 

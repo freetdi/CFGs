@@ -1,13 +1,20 @@
 
-
-DIRS = atomthreads contiki coremark dhrystone fuzix whetstone
+DIRS = atomthreads contiki coremark dhrystone fuzix whetstone stdlib nuttx
 ALGS = fipptm tamaki thorup
+
+gr:
+	for i in ${DIRS}; do \
+		( cd $$i && ../../convert_graph_types dot gr *.dot ); \
+	done
+
 
 THINGS = ${DIRS:%=%.out}
 SUMMARIES = ${ALGS:%=%.sum.out}
+LATEXTABLES = ${ALGS:%=%.sum.tex}
 
 all: ${THINGS}
 summaries: ${SUMMARIES}
+tables: ${LATEXTABLES}
 
 ${THINGS}: %.out:
 	for i in ${ALGS}; do \
@@ -16,14 +23,17 @@ ${THINGS}: %.out:
 	touch $@
 
 ${SUMMARIES}: %.sum.out:
-	echo \# avg_bagsize avg_runtime > $@
+	echo \# number avg_bagsize max_bagsize avg_runtime > $@
 	@for i in ${DIRS}; do \
 		echo -n "$$i " >> $@; \
 			f=$$i.$*.out; \
 			grep -v "#" $$f | \
-			awk '{ sum2 += $$2; sum3 += $$3 } \
-			     END { Q2=sum2/NR; Q3=sum3/NR; printf("%f %f\n",Q2, Q3) }' >> $@; \
+			awk '{ sum2 += $$2; sum3 += $$3; M= (M<$$2? $$2 : M) } \
+			     END { Q2=sum2/NR; Q3=sum3/NR; printf("%d %f %f %f\n",NR, Q2, M, Q3) }' >> $@; \
 	done
+
+${LATEXTABLES}: %.tex: %.out
+	./latextables.py $< > $@
 
 clean:
 	rm -rf *.out
