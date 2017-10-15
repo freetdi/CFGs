@@ -1,3 +1,4 @@
 digraph G {
+graph [label="Control-flow-graph for register allocator (function _getfname)"]
 0[label="0, 206: "];
 }
