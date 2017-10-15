@@ -1,0 +1,28 @@
+digraph G {
+graph [label="Tree-decomposition of width 1 for register allocator (function _atomTimeSet)"]
+0[label="0 | : "];
+1[label="1 | 5 : "];
+2[label="2 | 4 5 : "];
+3[label="3 | 3 4 : 0 1 2 3 "];
+4[label="4 | 2 3 : 0 1 2 3 "];
+5[label="5 | 1 2 : 0 1 2 3 "];
+6[label="6 | 0 1 : "];
+7[label="7 | : "];
+8[label="8 | 1 : "];
+9[label="9 | 2 : 0 1 2 3 "];
+10[label="10 | 3 : 0 1 2 3 "];
+11[label="11 | 4 : "];
+12[label="12 | 1 : "];
+0->1 ;
+1->2 ;
+8->6 ;
+5->8 ;
+9->5 ;
+4->9 ;
+10->4 ;
+3->10 ;
+11->3 ;
+2->11 ;
+12->7 ;
+6->12 ;
+}
