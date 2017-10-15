@@ -1,0 +1,32 @@
+digraph G {
+graph [label="Tree-decomposition of width 1 for register allocator (function _inet_pton)"]
+0[label="0 | : "];
+1[label="1 | 6 : "];
+2[label="2 | 5 6 : "];
+3[label="3 | 4 5 : "];
+4[label="4 | 3 4 : 0 1 "];
+5[label="5 | 2 3 : 0 1 "];
+6[label="6 | 1 2 : 0 1 "];
+7[label="7 | 0 1 : "];
+8[label="8 | : "];
+9[label="9 | 1 : "];
+10[label="10 | 2 : 0 1 "];
+11[label="11 | 3 : 0 1 "];
+12[label="12 | 4 : "];
+13[label="13 | 5 : "];
+14[label="14 | 1 : "];
+0->1 ;
+1->2 ;
+9->7 ;
+6->9 ;
+10->6 ;
+5->10 ;
+11->5 ;
+4->11 ;
+12->4 ;
+3->12 ;
+13->3 ;
+2->13 ;
+14->8 ;
+7->14 ;
+}
