@@ -1,7 +1,5 @@
 # Compile C code from various sources while extracting the control-flow graphs, as used in register allocation.
 
-# TODO: Add clean target that invoced "make clean" in all subdirectories from $(GRAPHSOURCES).
-
 GRAPHS = graphs/whetstone graphs/dhrystone graphs/contiki graphs/atomthreads graphs/nuttx graphs/stdlib
 
 .PHONY: all clean
