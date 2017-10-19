@@ -3,8 +3,8 @@
 
 .PHONY: all clean
 
-KNOWN_GOOD_REVISION = cd417249c913d964e44a73cac0aa5b86b45fc897
-KNOWN_GOOD_REVISION_APPS = 1db7d34a8449b91d863d5a8d1981fc8936fb40e3
+KNOWN_GOOD_REVISION = ffca71b9bf7e91926684ca08d768cf2b817b5309
+KNOWN_GOOD_REVISION_APPS = 63e086d1f76627693613daf98e426a1efadcc5be
 
 # Final make fails, since we are not actually building any app,so there is no link script.
 all:

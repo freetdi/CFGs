@@ -2,7 +2,7 @@
 
 .PHONY: all clean
 
-KNOWN_GOOD_REVISION = 10071
+KNOWN_GOOD_REVISION = 10088
 
 # Final make fails, since we are not actually building any app,so there is no link script.
 all:
