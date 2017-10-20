@@ -3,4 +3,7 @@
 make sure your converter is uptodate.
 $ make -C .. convert_graph_types
 
-dependencies are perhaps wrong, consider to clean...
+WARNING: tdecomp needs to be in the path, otherwise "make" will fail silently creating tables with all-zero entries!
+
+TODO: "make" should fail when there is no tdecomp!
+
