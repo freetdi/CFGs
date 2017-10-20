@@ -19,7 +19,7 @@ graphs/contiki:
 	cd contiki && make && cd .. && mkdir $@ && cp `find contiki -name "*dumpralloccfg*"` $@/
 
 graphs/fuzix:
-	cd fuzix && make && cd .. && mkdir $@ && cp `find fuzix -name "*dumpralloccfg*"` $@/
+	cd fuzix && make && cd .. && mkdir $@ && cp `find fuzix -name "*dumpralloccfg*"` $@/; true
 
 graphs/atomthreads:
 	cd atomthreads && make && cd .. && mkdir $@ && cp `find atomthreads -name "*dumpralloccfg*"` $@/

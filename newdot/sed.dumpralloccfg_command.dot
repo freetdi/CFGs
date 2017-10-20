@@ -1,0 +1,6 @@
+digraph G {
+graph [label="Control-flow-graph for register allocator (function _command)"]
+0[label="0, 768: 0 1 "];
+1[label="1, 769: 0 1 "];
+0->1 ;
+}

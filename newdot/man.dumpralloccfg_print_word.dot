@@ -1,0 +1,22 @@
+digraph G {
+graph [label="Control-flow-graph for register allocator (function _print_word)"]
+0[label="0, 332: 0 1 "];
+1[label="1, 333: 0 1 "];
+2[label="2, 335: 0 1 2 3 "];
+3[label="3, 336: 0 1 2 3 "];
+4[label="4, 338: 0 1 4 5 "];
+5[label="5, 339: 0 1 4 5 "];
+6[label="6, 341: 0 1 6 7 "];
+7[label="7, 342: 0 1 6 7 "];
+8[label="8, 344: 0 1 8 9 "];
+9[label="9, 345: 8 9 "];
+0->1 ;
+1->2 ;
+2->3 ;
+3->4 ;
+4->5 ;
+5->6 ;
+6->7 ;
+7->8 ;
+8->9 ;
+}
