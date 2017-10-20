@@ -15,7 +15,9 @@ tables: ${LATEXTABLES}
 gr: ../convert_graph_types
 	for i in ${DIRS}; do \
 		( cd $$i && ../$< dot gr *.dot ); \
+		touch $$i.out; \
 	done
+	touch gr
 
 ${THINGS}: %.out: gr
 	for i in ${ALGS}; do \
@@ -30,7 +32,7 @@ ${SUMMARIES}: %.sum.out: ${THINGS}
 			f=$$i.$*.out; \
 			grep -v "#" $$f | \
 			awk '{ sum2 += $$2; sum3 += $$3; M= (M<$$2? $$2 : M) } \
-			     END { Q2=sum2/NR; Q3=sum3/NR; printf("%d %f %f %f\n",NR, Q2, M, Q3) }' >> $@; \
+			     END { Q2=sum2/NR; Q3=sum3/NR*1000.; printf("%d %f %f %f\n",NR, Q2, M, Q3) }' >> $@; \
 	done
 
 ${LATEXTABLES}: %.tex: %.out
@@ -42,5 +44,8 @@ tables.pdf: tables.tex
 	${LATEX} $<
 	dvipdf tables
 
+tables.pdf: ${LATEXTABLES} tables.tex
+.PRECIOUS: ${LATEXTABLES} ${SUMMARIES}
+
 clean:
-	rm -rf *.out *.sum.tex
+	rm -rf *.out *.sum.tex tables.pdf
