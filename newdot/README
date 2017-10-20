@@ -1,0 +1,6 @@
+"make" should create summary tables.
+
+make sure your converter is uptodate.
+$ make -C .. convert_graph_types
+
+dependencies are perhaps wrong, consider to clean...

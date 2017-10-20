@@ -2,19 +2,18 @@
 DIRS = atomthreads contiki coremark dhrystone fuzix whetstone stdlib nuttx
 ALGS = fipptm tamaki thorup
 
-gr:
-	for i in ${DIRS}; do \
-		( cd $$i && ../../convert_graph_types dot gr *.dot ); \
-	done
-
-
 THINGS = ${DIRS:%=%.out}
 SUMMARIES = ${ALGS:%=%.sum.out}
 LATEXTABLES = ${ALGS:%=%.sum.tex}
 
-all: ${THINGS}
+all: ${LATEXTABLES}
 summaries: ${SUMMARIES}
 tables: ${LATEXTABLES}
+
+gr: ../convert_graph_types
+	for i in ${DIRS}; do \
+		( cd $$i && ../$< dot gr *.dot ); \
+	done
 
 ${THINGS}: %.out:
 	for i in ${ALGS}; do \
@@ -22,7 +21,7 @@ ${THINGS}: %.out:
 	done
 	touch $@
 
-${SUMMARIES}: %.sum.out:
+${SUMMARIES}: %.sum.out: ${THINGS}
 	echo \# number avg_bagsize max_bagsize avg_runtime > $@
 	@for i in ${DIRS}; do \
 		echo -n "$$i " >> $@; \
@@ -35,5 +34,11 @@ ${SUMMARIES}: %.sum.out:
 ${LATEXTABLES}: %.tex: %.out
 	./latextables.py $< > $@
 
+LATEX=latex
+pdf: tables.pdf
+tables.pdf: tables.tex
+	${LATEX} $<
+	dvipdf tables
+
 clean:
-	rm -rf *.out
+	rm -rf *.out *.tex
