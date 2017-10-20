@@ -41,4 +41,4 @@ tables.pdf: tables.tex
 	dvipdf tables
 
 clean:
-	rm -rf *.out *.tex
+	rm -rf *.out *.sum.tex
