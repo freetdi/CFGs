@@ -6,6 +6,8 @@ THINGS = ${DIRS:%=%.out}
 SUMMARIES = ${ALGS:%=%.sum.out}
 LATEXTABLES = ${ALGS:%=%.sum.tex}
 
+.PHONY: gr clean
+
 all: ${LATEXTABLES}
 summaries: ${SUMMARIES}
 tables: ${LATEXTABLES}
@@ -15,7 +17,7 @@ gr: ../convert_graph_types
 		( cd $$i && ../$< dot gr *.dot ); \
 	done
 
-${THINGS}: %.out:
+${THINGS}: %.out: gr
 	for i in ${ALGS}; do \
 		./do_it.sh $* $$i > $*.$$i.out; \
 	done
