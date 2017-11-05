@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+select=--fi
+
+for i in */*.gr; do
+
+	echo $i
+	tmp=$( tempfile )
+	tdecomp $select < $i | grep -v incomplete > $tmp
+	td-validate $i $tmp
+	rm $tmp
+
+done
