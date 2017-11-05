@@ -28,6 +28,7 @@ ${THINGS}: %.out: gr
 
 ${SUMMARIES}: %.sum.out: ${THINGS}
 	echo \# number avg_bagsize max_bagsize avg_runtime max_runtime > $@
+	@echo ${DIRS:%=%.$*.out} -\> $@
 	@for i in ${DIRS}; do \
 		echo -n "$$i " >> $@; \
 			f=$$i.$*.out; \
@@ -39,7 +40,7 @@ ${SUMMARIES}: %.sum.out: ${THINGS}
 ${LATEXTABLES}: %.tex: %.out
 	./latextables.py $< > $@
 
-tables.tex:
+tables.tex: Makefile
 	echo '\\documentclass{report}' > $@
 	echo '\\begin{document}' >> $@
 	echo '\\small' >> $@
@@ -59,4 +60,4 @@ tables.pdf: ${LATEXTABLES} tables.tex
 .PRECIOUS: ${LATEXTABLES} ${SUMMARIES}
 
 clean:
-	rm -rf *.out *.sum.tex tables.pdf
+	rm -rf *.out *.tex tables.pdf

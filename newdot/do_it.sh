@@ -10,5 +10,5 @@ for i in $( cd $dir; ls *.gr ); do
    echo -n "$i "
    tdecomp -L --$alg < $dir/$i 2>/dev/null | \
       grep -e '^s' -e bagsize | tr ',' ' ' | tr '\n' ' '| \
-	 	awk '{ printf("%d %f %d\n", $11, $7, $5); }'
+	 	awk '{ printf("%d %f %d\n", $5, $7, $11); }'
 done
