@@ -1,6 +1,6 @@
 
 DIRS = atomthreads contiki coremark dhrystone fuzix whetstone stdlib nuttx
-ALGS = ppfi fi ex17 thorup
+ALGS = pp ppfi fi ex17 thorup
 #ALGS = ppfi ppfitm tamaki thorup ppmd fitm
 
 THINGS = ${DIRS:%=%.out}
@@ -38,6 +38,16 @@ ${SUMMARIES}: %.sum.out: ${THINGS}
 
 ${LATEXTABLES}: %.tex: %.out
 	./latextables.py $< > $@
+
+tables.tex:
+	echo '\\documentclass{report}' > $@
+	echo '\\begin{document}' >> $@
+	echo '\\small' >> $@
+	for i in ${ALGS}; do \
+		echo "$$i"'\\\\' >> $@; \
+		echo '\\input{'"$$i"'.sum.tex}' >> $@; \
+	done
+	echo '\\end{document}' >> $@
 
 LATEX=latex
 pdf: tables.pdf
