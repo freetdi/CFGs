@@ -1,13 +1,13 @@
 
 DIRS = atomthreads contiki coremark dhrystone fuzix whetstone stdlib nuttx
-ALGS = fi ex17 thorup
+ALGS = ppfi fi ex17 thorup
 #ALGS = ppfi ppfitm tamaki thorup ppmd fitm
 
 THINGS = ${DIRS:%=%.out}
 SUMMARIES = ${ALGS:%=%.sum.out}
 LATEXTABLES = ${ALGS:%=%.sum.tex}
 
-.PHONY: gr clean
+.PHONY: clean
 
 all: ${LATEXTABLES}
 summaries: ${SUMMARIES}
@@ -27,13 +27,13 @@ ${THINGS}: %.out: gr
 	touch $@
 
 ${SUMMARIES}: %.sum.out: ${THINGS}
-	echo \# number avg_bagsize max_bagsize avg_runtime > $@
+	echo \# number avg_bagsize max_bagsize avg_runtime max_runtime > $@
 	@for i in ${DIRS}; do \
 		echo -n "$$i " >> $@; \
 			f=$$i.$*.out; \
 			grep -v "#" $$f | \
-			awk '{ sum2 += $$2; sum3 += $$3; M= (M<$$2? $$2 : M) } \
-			     END { Q2=sum2/NR; Q3=sum3/NR*1000.; printf("%d %f %f %f\n",NR, Q2, M, Q3) }' >> $@; \
+			awk '{ sum2 += $$2; sum3 += $$3; M= (M<$$2? $$2 : M); MT=(MT<$$3? $$3 : MT) } \
+			     END { Q2=sum2/NR; Q3=sum3/NR*1000.; printf("%d %f %f %f %f\n",NR, Q2, M, Q3, MT*1000) }' >> $@; \
 	done
 
 ${LATEXTABLES}: %.tex: %.out

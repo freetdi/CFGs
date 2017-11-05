@@ -8,7 +8,7 @@ class datafile_by_index:
 
 		keys = []
 		if(self._s[0]=='#'):
-			keys = self._s[:-1].split(" ")
+			keys = self._s[:-1].split()
 		
 		for i,k in enumerate(self._i):
 			if type(k)==str:
@@ -28,7 +28,7 @@ class datafile_by_index:
 		self._s = self._f.next()
 		while(self._s[0]=='#'):
 			self._s = self._f.next()
-		v = self._s.split(" ")
+		v = self._s.split()
 		x = []
 
 		for i in self._i:
