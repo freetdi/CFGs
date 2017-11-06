@@ -47,6 +47,7 @@ tables.tex: Makefile
 	for i in ${ALGS}; do \
 		echo "$$i"'\\\\' >> $@; \
 		echo '\\input{'"$$i"'.sum.tex}' >> $@; \
+		echo '\\\\' >> $@; \
 	done
 	echo '\\end{document}' >> $@
 
