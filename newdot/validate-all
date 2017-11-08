@@ -2,7 +2,8 @@
 
 set -e
 
-select=--fi
+select=--ppfitm
+
 
 for i in */*.gr; do
 

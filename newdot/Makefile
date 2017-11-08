@@ -1,7 +1,6 @@
 
 DIRS = atomthreads contiki coremark dhrystone fuzix whetstone stdlib nuttx
-ALGS = pp ppfi fi ex17 thorup
-#ALGS = ppfi ppfitm tamaki thorup ppmd fitm
+ALGS = ex17 fi ppfi ppmd ppfitm thorup fitm bmd pp
 
 THINGS = ${DIRS:%=%.out}
 SUMMARIES = ${ALGS:%=%.sum.out}
