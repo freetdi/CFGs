@@ -59,5 +59,22 @@ tables.pdf: tables.tex
 tables.pdf: ${LATEXTABLES} tables.tex
 .PRECIOUS: ${LATEXTABLES} ${SUMMARIES}
 
+${ALGS:%=%.all.out}: %.all.out:
+	: > $@
+	for i in ${DIRS}; do \
+		cat $$i.$*.out | awk '{ print $$1, $$2; }' >> $@; \
+	done
+
+ppedgleft.out:
+	: > $@
+	for i in ${DIRS}; do \
+		for j in $$i/*.gr; do \
+			echo -n "$$j" >> $@; \
+			tdecomp --pp < $$j | grep PP\ ed | awk '{ print "", $$5 }' >> $@; \
+		done; \
+	done
+
+
+
 clean:
 	rm -rf *.out *.tex tables.pdf
