@@ -3,12 +3,16 @@ graph [label="Control-flow-graph for register allocator (function _ctk_dialog_op
 0[label="0, 0: "];
 1[label="1, 1: "];
 2[label="2, 2: "];
-3[label="3, 4: "];
-4[label="4, 7: "];
-5[label="5, 8: "];
+3[label="3, 4: 0 1 "];
+4[label="4, 5: 0 1 2 3 "];
+5[label="5, 6: 2 3 "];
+6[label="6, 9: "];
+7[label="7, 10: "];
 0->1 ;
 1->2 ;
 2->3 ;
 3->4 ;
 4->5 ;
+5->6 ;
+6->7 ;
 }

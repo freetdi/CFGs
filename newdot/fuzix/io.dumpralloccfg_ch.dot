@@ -5,9 +5,9 @@ graph [label="Control-flow-graph for register allocator (function _ch)"]
 2[label="2, 2: 0 1 "];
 3[label="3, 3: 0 1 2 3 "];
 4[label="4, 4: 2 3 4 "];
-5[label="5, 5: 4 5 "];
-6[label="6, 6: 5 6 7 "];
-7[label="7, 7: 6 7 "];
+5[label="5, 5: 4 5 6 "];
+6[label="6, 6: 5 6 7 8 "];
+7[label="7, 7: 7 8 "];
 8[label="8, 8: "];
 9[label="9, 9: "];
 0->1 ;

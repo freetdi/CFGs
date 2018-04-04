@@ -30,16 +30,15 @@ graph [label="Control-flow-graph for register allocator (function _die)"]
 27[label="27, 39: "];
 28[label="28, 40: "];
 29[label="29, 42: "];
-30[label="30, 43: 12 "];
-31[label="31, 44: 12 "];
+30[label="30, 43: 12 13 "];
+31[label="31, 44: 12 13 "];
 32[label="32, 45: "];
-33[label="33, 46: 12 "];
-34[label="34, 47: 12 "];
-35[label="35, 48: 12 13 14 "];
-36[label="36, 49: 13 14 "];
+33[label="33, 46: 12 13 "];
+34[label="34, 47: 12 13 "];
+35[label="35, 48: 12 13 "];
+36[label="36, 49: "];
 37[label="37, 50: "];
 38[label="38, 51: "];
-39[label="39, 52: "];
 0->1 ;
 1->2 ;
 2->3 ;
@@ -83,5 +82,4 @@ graph [label="Control-flow-graph for register allocator (function _die)"]
 35->36 ;
 36->37 ;
 37->38 ;
-38->39 ;
 }

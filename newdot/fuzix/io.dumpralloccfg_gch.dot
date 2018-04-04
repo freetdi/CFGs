@@ -11,9 +11,9 @@ graph [label="Control-flow-graph for register allocator (function _gch)"]
 8[label="8, 11: 2 3 4 5 "];
 9[label="9, 14: 2 3 4 5 6 7 "];
 10[label="10, 15: 6 7 8 "];
-11[label="11, 16: 8 9 "];
-12[label="12, 17: 9 10 11 "];
-13[label="13, 18: 10 11 "];
+11[label="11, 16: 8 9 10 "];
+12[label="12, 17: 9 10 11 12 "];
+13[label="13, 18: 11 12 "];
 14[label="14, 20: "];
 15[label="15, 21: "];
 0->1 ;

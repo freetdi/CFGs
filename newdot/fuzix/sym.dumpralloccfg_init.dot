@@ -14,8 +14,8 @@ graph [label="Control-flow-graph for register allocator (function _init)"]
 11[label="11, 13: 6 7 "];
 12[label="12, 14: 6 7 "];
 13[label="13, 15: 8 9 "];
-14[label="14, 83: 8 9 10 11 "];
-15[label="15, 84: 8 9 10 11 12 13 "];
+14[label="14, 82: 8 9 10 11 "];
+15[label="15, 83: 8 9 10 11 12 13 "];
 16[label="16, 16: 8 9 10 11 12 13 "];
 17[label="17, 19: 10 11 12 13 "];
 18[label="18, 20: 10 11 12 13 "];
@@ -56,15 +56,14 @@ graph [label="Control-flow-graph for register allocator (function _init)"]
 53[label="53, 70: 10 11 "];
 54[label="54, 71: 10 11 "];
 55[label="55, 73: 10 11 "];
-56[label="56, 74: 38 "];
-57[label="57, 75: 38 "];
+56[label="56, 74: 38 39 "];
+57[label="57, 75: 38 39 "];
 58[label="58, 76: "];
-59[label="59, 77: 38 "];
-60[label="60, 78: 38 "];
-61[label="61, 79: 38 39 40 "];
-62[label="62, 80: 39 40 "];
+59[label="59, 77: 38 39 "];
+60[label="60, 78: 38 39 "];
+61[label="61, 79: 38 39 "];
+62[label="62, 80: "];
 63[label="63, 81: "];
-64[label="64, 82: "];
 0->1 ;
 1->2 ;
 2->3 ;
@@ -98,7 +97,7 @@ graph [label="Control-flow-graph for register allocator (function _init)"]
 26->27 ;
 27->28 ;
 28->29 ;
-29->63 ;
+29->62 ;
 30->31 ;
 31->32 ;
 31->34 ;
@@ -119,7 +118,7 @@ graph [label="Control-flow-graph for register allocator (function _init)"]
 45->46 ;
 46->47 ;
 46->48 ;
-47->63 ;
+47->62 ;
 48->49 ;
 49->50 ;
 50->51 ;
@@ -136,5 +135,4 @@ graph [label="Control-flow-graph for register allocator (function _init)"]
 60->61 ;
 61->62 ;
 62->63 ;
-63->64 ;
 }

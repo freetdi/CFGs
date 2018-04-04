@@ -45,16 +45,15 @@ graph [label="Control-flow-graph for register allocator (function _finishup)"]
 42[label="42, 68: "];
 43[label="43, 70: "];
 44[label="44, 73: "];
-45[label="45, 74: 4 "];
-46[label="46, 75: 4 "];
+45[label="45, 74: 4 5 "];
+46[label="46, 75: 4 5 "];
 47[label="47, 76: "];
-48[label="48, 77: 4 "];
-49[label="49, 78: 4 "];
-50[label="50, 79: 4 5 6 "];
-51[label="51, 80: 5 6 "];
+48[label="48, 77: 4 5 "];
+49[label="49, 78: 4 5 "];
+50[label="50, 79: 4 5 "];
+51[label="51, 80: "];
 52[label="52, 81: "];
 53[label="53, 82: "];
-54[label="54, 83: "];
 0->1 ;
 1->2 ;
 2->3 ;
@@ -121,5 +120,4 @@ graph [label="Control-flow-graph for register allocator (function _finishup)"]
 50->51 ;
 51->52 ;
 52->53 ;
-53->54 ;
 }

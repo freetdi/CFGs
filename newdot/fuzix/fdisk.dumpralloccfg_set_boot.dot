@@ -43,14 +43,15 @@ graph [label="Control-flow-graph for register allocator (function _set_boot)"]
 40[label="40, 50: 31 32 33 34 35 36 "];
 41[label="41, 53: 35 36 37 "];
 42[label="42, 55: 35 36 37 "];
-43[label="43, 56: 35 36 38 "];
-44[label="44, 57: 35 36 38 "];
+43[label="43, 56: 35 36 38 39 "];
+44[label="44, 57: 35 36 38 39 "];
 45[label="45, 58: 35 36 "];
-46[label="46, 59: 35 36 38 "];
-47[label="47, 60: 35 36 38 "];
-48[label="48, 61: 35 36 38 "];
-49[label="49, 62: "];
+46[label="46, 59: 35 36 38 39 "];
+47[label="47, 60: 35 36 38 39 "];
+48[label="48, 61: 35 36 38 39 40 "];
+49[label="49, 62: 35 36 40 "];
 50[label="50, 63: "];
+51[label="51, 64: "];
 0->1 ;
 1->2 ;
 2->3 ;
@@ -83,7 +84,7 @@ graph [label="Control-flow-graph for register allocator (function _set_boot)"]
 29->30 ;
 30->31 ;
 30->32 ;
-31->49 ;
+31->50 ;
 32->33 ;
 33->34 ;
 34->35 ;
@@ -105,4 +106,5 @@ graph [label="Control-flow-graph for register allocator (function _set_boot)"]
 47->48 ;
 48->49 ;
 49->50 ;
+50->51 ;
 }

@@ -15,13 +15,14 @@ graph [label="Control-flow-graph for register allocator (function _psock_newdata
 12[label="12, 20: 6 7 "];
 13[label="13, 21: "];
 14[label="14, 23: "];
-15[label="15, 24: "];
-16[label="16, 25: "];
-17[label="17, 28: "];
-18[label="18, 30: "];
+15[label="15, 24: 9 10 "];
+16[label="16, 25: 9 10 "];
+17[label="17, 26: "];
+18[label="18, 29: "];
 19[label="19, 31: "];
-20[label="20, 35: "];
+20[label="20, 32: "];
 21[label="21, 36: "];
+22[label="22, 37: "];
 0->1 ;
 1->2 ;
 2->3 ;
@@ -29,7 +30,7 @@ graph [label="Control-flow-graph for register allocator (function _psock_newdata
 4->5 ;
 5->6 ;
 5->7 ;
-6->20 ;
+6->21 ;
 7->8 ;
 8->9 ;
 9->10 ;
@@ -37,13 +38,14 @@ graph [label="Control-flow-graph for register allocator (function _psock_newdata
 11->12 ;
 11->14 ;
 12->13 ;
-13->20 ;
+13->21 ;
 14->15 ;
 15->16 ;
 16->17 ;
-16->18 ;
-17->20 ;
-18->19 ;
+17->18 ;
+17->19 ;
+18->21 ;
 19->20 ;
 20->21 ;
+21->22 ;
 }

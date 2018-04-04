@@ -8,15 +8,14 @@ graph [label="Control-flow-graph for register allocator (function _task_setcance
 5[label="5, 7: "];
 6[label="6, 8: "];
 7[label="7, 9: "];
-8[label="8, 10: 2 "];
-9[label="9, 11: 2 "];
+8[label="8, 10: 2 3 "];
+9[label="9, 11: 2 3 "];
 10[label="10, 12: "];
-11[label="11, 13: 2 "];
-12[label="12, 14: 2 "];
-13[label="13, 15: 2 3 4 "];
-14[label="14, 16: 3 4 "];
+11[label="11, 13: 2 3 "];
+12[label="12, 14: 2 3 "];
+13[label="13, 15: 2 3 "];
+14[label="14, 16: "];
 15[label="15, 17: "];
-16[label="16, 18: "];
 0->1 ;
 1->2 ;
 2->3 ;
@@ -34,5 +33,4 @@ graph [label="Control-flow-graph for register allocator (function _task_setcance
 12->13 ;
 13->14 ;
 14->15 ;
-15->16 ;
 }
