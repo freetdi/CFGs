@@ -1,6 +1,6 @@
 # Compile C code from various sources while extracting the control-flow graphs, as used in register allocation.
 
-GRAPHS = graphs/whetstone graphs/dhrystone graphs/contiki graphs/atomthreads graphs/nuttx graphs/stdlib
+GRAPHS = graphs/whetstone graphs/dhrystone graphs/stdcbench graphs/contiki graphs/atomthreads graphs/nuttx graphs/stdlib
 
 .PHONY: all clean
 
@@ -14,6 +14,9 @@ graphs/dhrystone:
 
 graphs/coremark:
 	cd coremark && make && cd .. && mkdir $@ && cp `find coremark -name "*dumpralloccfg*"` $@/
+
+graphs/stdcbench:
+	cd stdcbench && make && cd .. && mkdir $@ && cp `find stdcbench -name "*dumpralloccfg*"` $@/
 
 graphs/contiki:
 	cd contiki && make && cd .. && mkdir $@ && cp `find contiki -name "*dumpralloccfg*"` $@/
