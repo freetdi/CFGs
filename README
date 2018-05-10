@@ -1,12 +1,13 @@
 This repository containes control-flow graphs of
 various C functions. The control-flow graphs were obtained
 from the iCode in the sdcc compiler [1] by compiling, the
-sdcc standard C library from the 3.5.0 sdcc release, a C
+SDCC standard C library from the SDCC 3.7.0 release, a C
 version of the floating-point benchmark Whetstone [2], an
 ISO C version of version 2 of the integer benchmark Dhrys-
-tone [3] and the integer benchmark Coremark [4], version
-2.5 of the operating system Contiki [5] and the operating
-system FUZIX (from the git repository as of 2015-01-08).
+tone [3], the integer benchmark Coremark [4], version 0.5
+of stdcbench version 2.5 of the operating system Contiki
+[5] and the operating systems FUZIX, NuttX, Atomthreads
+(from the repositories as of 2017-10-19).
 
 [1] http://sdcc.sourceforge.net/
 
@@ -22,3 +23,4 @@ Version 2 and Measurement Rules. SIGPLAN Notices,
 [5] A. Dunkels, B. Grönvall, and T. Voigt. Contiki - a
 Lightweight and Flexible Operating System for Tiny
 Networked Sensors. Emnets-I, 2004.
+
