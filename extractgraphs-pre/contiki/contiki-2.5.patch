@@ -17,7 +17,7 @@ diff -ru contiki-2.5/cpu/z80/Makefile.z80 /home/philipp/contiki-2.5-alt/cpu/z80/
  ### Default flags
  CFLAGS  += --std-c99 -mz80 --opt-code-size
 -CFLAGS	+= --peep-file $(CONTIKI_CPU)/z80peephole.def --fverbose-asm
-+CFLAGS	+= --fverbose-asm --dump-graphs
++CFLAGS	+= --fverbose-asm --nogcse --dump-graphs
  ASFLAGS +=
  LDFLAGS += -mz80 --out-fmt-ihx --no-std-crt0
  AROPTS   = -a

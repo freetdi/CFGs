@@ -4,7 +4,7 @@
  MAX_ALLOCS_PER_NODE=3000
  SDCC=sdcc
 -SDCCFLAGS=--fverbose-asm --std-c99 --opt-code-size --max-allocs-per-node $(MAX_ALLOCS_PER_NODE)
-+SDCCFLAGS=--fverbose-asm --std-c99 --opt-code-size --max-allocs-per-node $(MAX_ALLOCS_PER_NODE) --dump-graphs
++SDCCFLAGS=--fverbose-asm --std-c99 --opt-code-size --max-allocs-per-node $(MAX_ALLOCS_PER_NODE)  --nogcse --dump-graphs
  
  all: dhrystone.ihx
  

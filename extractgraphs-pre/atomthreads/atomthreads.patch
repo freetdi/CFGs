@@ -8,8 +8,8 @@ index 3bd75b5..b79e4ed 100644
  # Compiler/Assembler flags
 -CFLAGS= -mstm8 -c -D $(PART) --opt-code-size
 -DBG_CFLAGS= -mstm8 -c -D $(PART) --opt-code-size
-+CFLAGS= -mstm8 -c -D $(PART) --opt-code-size --dump-graphs
-+DBG_CFLAGS= -mstm8 -c -D $(PART) --opt-code-size --dump-graphs
++CFLAGS= -mstm8 -c -D $(PART) --opt-code-size --nogcse --dump-graphs
++DBG_CFLAGS= -mstm8 -c -D $(PART) --opt-code-size --nogcse --dump-graphs
  ASMFLAGS= -loff
  DBG_ASMFLAGS= -loff
  LINKFLAGS= -mstm8

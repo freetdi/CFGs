@@ -7,7 +7,7 @@ index d0b46bd008..2dacc34bfe 100644
  AS = sdasz80
  AR = sdar -r
 -ARCHCPUFLAGS = -mz80
-+ARCHCPUFLAGS = -mz80 --dump-graphs
++ARCHCPUFLAGS = -mz80  --nogcse --dump-graphs
  
  ifeq ($(CONFIG_DEBUG_SYMBOLS),y)
    ARCHOPTIMIZATION = --debug

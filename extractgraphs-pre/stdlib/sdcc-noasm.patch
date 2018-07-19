@@ -7,7 +7,7 @@ Index: device/lib/gbz80/Makefile.in
  LIB_TYPE     = @LIB_TYPE@
  
 -SCC = $(top_builddir)/bin/sdcc -mgbz80
-+SCC = $(top_builddir)/bin/sdcc -mgbz80 --dump-graphs
++SCC = $(top_builddir)/bin/sdcc -mgbz80  --nogcse --dump-graphs
  SAS = $(top_builddir)/bin/sdasgb
  
  # override PORTDIR defined by super (parent) makefile
