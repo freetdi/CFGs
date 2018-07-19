@@ -1,12 +1,13 @@
 This repository containes control-flow graphs of
 various C functions. The control-flow graphs were obtained
-from the iCode in the sdcc compiler [1] by compiling, the
-SDCC standard C library from the SDCC 3.7.0 release, a C
-version of the floating-point benchmark Whetstone [2], an
-ISO C version of version 2 of the integer benchmark Dhrys-
-tone [3], the integer benchmark Coremark [4], version 0.5
-of stdcbench [5], version 2.5 of the operating system Contiki
-[5] and the operating systems FUZIX, NuttX, Atomthreads
+from the iCode at register allocation in the Small Device
+C Compiler [1] by compiling, the SDCC standard C library
+from the SDCC 3.7.0 release, a C version of the floating-
+point benchmark Whetstone [2], an ISO C version of
+version 2 of the integer benchmark Dhrystone [3], the
+integer benchmark Coremark [4], version 0.5 of stdcbench [5],
+version 2.5 of the operating system Contiki [5] and the
+operating systems FUZIX, NuttX, Atomthreads
 (from the repositories as of 2017-10-19).
 
 [1] http://sdcc.sourceforge.net/
