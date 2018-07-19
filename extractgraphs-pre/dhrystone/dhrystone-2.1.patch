@@ -1,0 +1,10 @@
+--- Makefile	2016-05-09 13:17:13.000000000 +0200
++++ Makefile2	2017-10-01 17:38:32.552018752 +0200
+@@ -1,6 +1,6 @@
+ MAX_ALLOCS_PER_NODE=3000
+ SDCC=sdcc
+-SDCCFLAGS=--fverbose-asm --std-c99 --opt-code-size --max-allocs-per-node $(MAX_ALLOCS_PER_NODE)
++SDCCFLAGS=--fverbose-asm --std-c99 --opt-code-size --max-allocs-per-node $(MAX_ALLOCS_PER_NODE) --dump-graphs
+ 
+ all: dhrystone.ihx
+ 

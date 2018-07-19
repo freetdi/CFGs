@@ -1,0 +1,25 @@
+diff --git Applications/games/Makefile.z80 Applications/games/Makefile.z80
+index d55ef7f3..cff298a0 100644
+--- Applications/games/Makefile.z80
++++ Applications/games/Makefile.z80
+@@ -9,7 +9,7 @@ PLATFORM =
+ PROGLOAD=`(cat ../../Kernel/platform/config.h; echo PROGLOAD) | cpp -E | tail -n1`
+ 
+ # Used for programs that make sdcc go boom or take hours
+-CC_CRAP = -mz80 --std-c99 -c --opt-code-size --max-allocs-per-node 1000 -I../../Library/include
++CC_CRAP = --dump-graphs -mz80 --std-c99 -c --opt-code-size --max-allocs-per-node 1000 -I../../Library/include
+ ASM_OPT = -l -o -s
+ LINKER_OPT = -mz80 --nostdlib --no-std-crt0 --code-loc $(PROGLOAD) --data-loc  0
+ BINMAN = ../../Library/tools/binman
+diff --git Library/tools/fcc.c Library/tools/fcc.c
+index 369bece9..8ea8f76e 100644
+--- Library/tools/fcc.c
++++ Library/tools/fcc.c
+@@ -388,6 +388,7 @@ static void build_command(void)
+   if (verbose == 1)
+     add_argument("-V");
+   /* Set up the basic parameters we will inflict on the user */
++  add_argument("--dump-graphs");
+   add_argument("--std-c99");
+   add_option("-m", cpu?cpu:"z80");
+   if (mode == MODE_LINK) {
