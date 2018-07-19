@@ -10,6 +10,11 @@ version 2.5 of the operating system Contiki [5] and the
 operating systems FUZIX, NuttX, Atomthreads
 (from the repositories as of 2017-10-19).
 
+The directory extractgraphs-pre contains infrastructure
+for extracting control-flow graphs on which no global redundancy-
+elimination has been performed (the graphs are taken from SDCC
+with GCSE disabled, before lospre).
+
 [1] http://sdcc.sourceforge.net/
 
 [2] H. J. Curnow and B. A. Wichmann. A Synthetic

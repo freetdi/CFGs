@@ -2,7 +2,7 @@ This directory contains some tools used to extract the control-flow-graphs from 
 
 Most graphs can be reextracted by simply invocing "make".
 
-This will build various C source files with the SDCC using the --dump-graphs option. SDCC 3.6.9 #10039 or later is required.
+This will build various C source files with the SDCC using the --nogcse --dump-graphs options. SDCC 3.6.9 #10039 or later is required.
 Most interesting are problably the control-flow graphs from register allocation. Their filenames are <file>.dumpralloccfg_<function>.dot
 
 Problems:
